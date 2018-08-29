@@ -31,9 +31,15 @@
 1. `kubeadm join`
 
 ## Connecting to cluster
-1.
+1. [Create token](https://github.com/kubernetes/dashboard/wiki/Creating-sample-user)
+2. Install `kubectl` locally
+3. Set cluster: `kubectl config set-cluster <cluster-name> --server=<server-addr>:<port(default:6443)> --insecure-skip-tls-verify=true`
+4. Set user: `kubectl config set-credentials <username> --token=<your-token>`
+5. Set up context: `kubectl config set-context <context-navn> --user=<username> --cluser=<cluster-name>`
+6. Use context: `kubectl config use-context <context-name>`
 
 ## References
 [How to install Kubernetes on Ubuntu 18.04 Bionic Beaver Linux](https://linuxconfig.org/how-to-install-kubernetes-on-ubuntu-18-04-bionic-beaver-linux)
 [Accessing Clusters (kubernetes.io)](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/)
 [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+[Creating a Custom Cluster from Scratch (kubernentes.io)](https://kubernetes.io/docs/setup/scratch/#try-examples)
