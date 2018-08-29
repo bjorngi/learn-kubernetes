@@ -34,3 +34,5 @@
 
 ## References
 [How to install Kubernetes on Ubuntu 18.04 Bionic Beaver Linux](https://linuxconfig.org/how-to-install-kubernetes-on-ubuntu-18-04-bionic-beaver-linux)
+[Accessing Clusters (kubernetes.io)](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/)
+[kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
