@@ -35,7 +35,7 @@
 2. Install `kubectl` locally
 3. Set cluster: `kubectl config set-cluster <cluster-name> --server=<server-addr>:<port(default:6443)> --insecure-skip-tls-verify=true`
 4. Set user: `kubectl config set-credentials <username> --token=<your-token>`
-5. Set up context: `kubectl config set-context <context-navn> --user=<username> --cluser=<cluster-name>`
+5. Set up context: `kubectl config set-context <context-navn> --user=<username> --cluster=<cluster-name>`
 6. Use context: `kubectl config use-context <context-name>`
 
 ## References
