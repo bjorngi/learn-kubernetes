@@ -1,3 +1,11 @@
+Goals next session:
+* Setup Traefik
+* Get dashboard working (both kubernetes and traefik)
+* Get domain
+* Route domain with Traefik
+* Set up Let's encrypt with traefik
+* Deploy a website
+
 # Kubernetes
 
 ## Setup Ubuntu 18.04
@@ -38,8 +46,39 @@
 5. Set up context: `kubectl config set-context <context-navn> --user=<username> --cluser=<cluster-name>`
 6. Use context: `kubectl config use-context <context-name>`
 
+
+## Setup dashboard
+* [Guide](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)
+
+## Install Traefik
+
+
+## Pod priority
+```
+apiVersion: scheduling.k8s.io/v1beta1
+kind: PriorityClass
+metadata:
+  name: high-priority
+value: 1000000
+globalDefault: false
+description: "This priority class should be used for XYZ service pods only."
+```
+
+## Drain pod (maintenance)
+1. Run `kubectl drain <node>` to start shutting down pods and reschedule on other nodes
+2. Node is now unchedulable (see `kubectl get nodes` to confirm)
+3. Do maintenance with node
+4. Run `kubectl uncondon <node>`
+
+
+### Resources
+* [Traefik docs](https://docs.traefik.io/user-guide/kubernetes/)
+* [ACME cert](https://blog.n1analytics.com/free-automated-tls-certificates-on-k8s/#install-cert-manager)
+
 ## References
-[How to install Kubernetes on Ubuntu 18.04 Bionic Beaver Linux](https://linuxconfig.org/how-to-install-kubernetes-on-ubuntu-18-04-bionic-beaver-linux)
-[Accessing Clusters (kubernetes.io)](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/)
-[kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+* [How to install Kubernetes on Ubuntu 18.04 Bionic Beaver Linux](https://linuxconfig.org/how-to-install-kubernetes-on-ubuntu-18-04-bionic-beaver-linux)
+* [Accessing Clusters (kubernetes.io)](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/)
+* [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 [Creating a Custom Cluster from Scratch (kubernentes.io)](https://kubernetes.io/docs/setup/scratch/#try-examples)
+
+* [Ansible tutorial ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-1-11-cluster-using-kubeadm-on-ubuntu-18-04)
