@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stress-deployment
-  labels:
-    app: stress
+  name: stress-deployment-2
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: stress
+      app: stress-2
   template:
     metadata:
       name: shell-demo
       labels: 
-        app: stress
+        app: stress-2
     spec:
+      priorityClassName: high-priority
       volumes:
       - name: shared-data
         emptyDir: {}
@@ -23,7 +22,8 @@ spec:
         image: nginx
         resources:
           limits:
-            memory: "900Mi"
+            memory: "800Mi"
+            cpu: "1"
         volumeMounts:
         - name: shared-data
           mountPath: /usr/share/nginx/html
